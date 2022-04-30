@@ -1,0 +1,33 @@
+service: recrecbot
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  stage: ${opt:stage,'development'}
+  timeout: 60
+  
+  environment:
+    ${file(.env.${opt:stage, 'development'}.yml):}
+
+package:
+  exclude:
+    - .env.*
+
+functions:
+  recrecbot:
+    handler: handler.recrecbot
+    events:
+      - schedule: rate(15 minutes)
+
+plugins:
+  - serverless-python-requirements
+  - serverless-stage-manager
+
+custom:
+  stages:
+    - development
+    - staging
+    - production
