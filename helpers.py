@@ -4,9 +4,7 @@ import urllib.parse
 import json
 import os
 
-def discord(group,result,division_id):
-
-    webHookURL =  os.environ['discordURL']
+def discord(webHookURL,group,result,division_id):
 
     # do the discord stuff
     webhook = DiscordWebhook(url=webHookURL)
@@ -21,14 +19,13 @@ def discord(group,result,division_id):
     response = webhook.execute()
 
 
-def slack(group,result,division_id):
+def slack(webHookURL,group,result,division_id):
     
     # build data for request
-    url =  os.environ['slackURL']
     data = json.dumps({'text': result}).encode('utf-8') #data should be in bytes
     headers = {'Content-Type': 'application/json'}
 
     # send it!
-    req = urllib.request.Request(url, data, headers)
+    req = urllib.request.Request(webHookURL, data, headers)
     resp = urllib.request.urlopen(req)
     response = resp.read()
