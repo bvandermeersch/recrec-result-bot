@@ -7,7 +7,7 @@ import os
 def discord(webHookURL,group,result,division_id):
 
     # do the discord stuff
-    webhook = DiscordWebhook(url=webHookURL)
+    webhook = DiscordWebhook(url=webHookURL, rate_limit_retry=True)
     embed = DiscordEmbed(title='', description="", color='581478')
     embed.add_embed_field(name="Group", value=group, inline=False)
     embed.add_embed_field(name="Result", value=result, inline=False)

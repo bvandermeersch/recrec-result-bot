@@ -1,8 +1,6 @@
-RecRec Match Bot
+AWS Serverless RecRec Match Bot
 
-AWS Serverless Match Bot
-
-Will create a match bot that reports match results to discord or slack every 30mins
+Will create a match bot that reports match results to discord or slack every 15mins
 
 Developed using node 14.7.6 and Python3.8
 
@@ -31,3 +29,6 @@ Deploy to aws:
 ```serverless deploy --stage production```
 
 This will launch a lambda function to AWS with the production .env file
+
+
+requires a DB with a matches and seasons table

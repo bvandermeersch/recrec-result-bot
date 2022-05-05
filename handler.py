@@ -34,8 +34,10 @@ def recrecbot(event, context):
     # get all active seasons      
     seasons = dbFunctions.get_seasons(mysql_conn)
 
+    # loop the seasons
     for s in seasons:
 
+        # set season id
         season_id = s[1]
 
         # set up the GET request to get season information
