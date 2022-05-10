@@ -1,6 +1,6 @@
 # check if match was inserted
 def check_for_match(conn, season_id, match_id):
-    sql = "SELECT * FROM matches WHERE season_id = %s and match_id = %s"
+    sql = "SELECT * FROM matches WHERE binary season_id = %s and binary match_id = %s"
     cursor = conn.cursor()
     cursor.execute(sql, (season_id, match_id))
     rowcount = cursor.rowcount
